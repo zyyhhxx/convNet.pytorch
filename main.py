@@ -364,11 +364,11 @@ def main_worker(args):
 
         if not found and val_results['prec1'] > 0.94:
             found = True
-            end_time = time.time()
+            end_time = time.time() - start_time
             end_epoch = epoch
 
     if not found:
-        end_time = time.time()
+        end_time = time.time() - start_time
         end_epoch = epoch
 
     print(round(end_time / 60, 2), end_epoch)
