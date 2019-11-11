@@ -20,6 +20,7 @@ from utils.param_filter import FilterModules, is_bn
 from datetime import datetime
 from ast import literal_eval
 from trainer import Trainer
+import time
 
 model_names = sorted(name for name in models.__dict__
                      if name.islower() and not name.startswith("__")
@@ -162,7 +163,7 @@ def main_worker(args):
                   resume=args.resume is not '',
                   dummy=args.distributed and args.local_rank > 0)
 
-    results_path = path.join(save_path, 'results')
+    results_path = path.join(save_path)
     results = ResultsLog(results_path,
                          title='Training Results - %s' % args.save)
 
@@ -292,6 +293,12 @@ def main_worker(args):
     logging.info('data regime: %s', train_data)
     args.start_epoch = max(args.start_epoch, 0)
     trainer.training_steps = args.start_epoch * len(train_data)
+
+    start_time = time.time()
+    end_time = None
+    end_epoch = None
+    found = False
+
     for epoch in range(args.start_epoch, args.epochs):
         trainer.epoch = epoch
         train_data.set_epoch(epoch)
@@ -355,6 +362,12 @@ def main_worker(args):
                          title='Gradient Norm', ylabel='value')
         results.save()
 
+        if not found and val_results['prec1'] > 0.94:
+            found = True
+            end_time = time.time()
+            end_epoch = epoch
+
+    print(round(epoch / 60, 2), end_time)
 
 if __name__ == '__main__':
     main()
