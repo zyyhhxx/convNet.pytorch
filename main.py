@@ -371,7 +371,7 @@ def main_worker(args):
         end_time = time.time() - start_time
         end_epoch = epoch
 
-    print(round(end_time / 60, 2), end_epoch)
+    print("Target reached: {}, minutes: {}, epochs: {}".format(found, round(end_time / 60, 3), end_epoch))
 
 if __name__ == '__main__':
     main()
