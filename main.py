@@ -367,6 +367,10 @@ def main_worker(args):
             end_time = time.time()
             end_epoch = epoch
 
+    if not found:
+        end_time = time.time()
+        end_epoch = epoch
+
     print(round(epoch / 60, 2), end_time)
 
 if __name__ == '__main__':
