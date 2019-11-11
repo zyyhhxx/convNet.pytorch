@@ -362,7 +362,7 @@ def main_worker(args):
                          title='Gradient Norm', ylabel='value')
         results.save()
 
-        if not found and val_results['prec1'] > 0.94:
+        if not found and val_results['prec1'] > 94:
             found = True
             end_time = time.time() - start_time
             end_epoch = epoch
