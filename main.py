@@ -365,11 +365,11 @@ def main_worker(args):
         if not found and val_results['prec1'] > 94:
             found = True
             end_time = time.time() - start_time
-            end_epoch = epoch
+            end_epoch = epoch + 1
 
     if not found:
         end_time = time.time() - start_time
-        end_epoch = epoch
+        end_epoch = epoch + 1
 
     print("Target reached: {}, minutes: {}, epochs: {}".format(found, round(end_time / 60, 3), end_epoch))
 
