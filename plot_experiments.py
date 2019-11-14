@@ -16,7 +16,7 @@ y = [6 for i in range(100)]
 plt.plot(x, y, ':r')
 plt.xlabel("epoch")
 plt.ylabel("validation error")
-plt.ylim(0, 30)
+plt.ylim(3, 20)
 plt.legend()
 plt.savefig("experiment.png")
 print("Experiment plot is successfully generated")
