@@ -1,0 +1,5 @@
+M=2: minutes: 139.223, epochs: 87
+M=4: minutes: 237.265, epochs: 82
+M=8: minutes: 432.552, epochs: 82
+M=16: minutes: 808.374, epochs: 82
+M=32: minutes: 1689.667, epochs: 82
